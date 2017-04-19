@@ -1,43 +1,45 @@
 var Post = React.createClass({
-  propTypes: {
-    title: React.PropTypes.string,
-    body: React.PropTypes.string,
-    published: React.PropTypes.bool
-  },
-
-    getInitialState() {
-        return { items: [] }
-    },
-
     componentDidMount: function() {
         console.log('this mounted POST')
     },
 
   render: function() {
-    return (
-      <div>
-        <div>Title: {this.props.title}</div>
-        <div>Body: {this.props.body}</div>
-        <div>Published: {this.props.published ? 'true' : 'false' }</div>
-          <input type="button" onClick={this.handleDelete} value="Click Me!" />
-          <input type="button" onClick={this.deech} value="Click Me2!" />
-      </div>
-    );
-  },
 
-    handleDelete: function() {
-        // this.setState((prevState, props) => {
-        //     return {item: prevState.counter + props.step};
-        // });
-        console.log('asd')
+    var post = this.props.post;
+    var state = this.props.state;
+    var index = this.props.index;
+
+    return (
+
+            <div key={index} id={post.id}>
+                <div className="post_title">
+                    {post.title}
+                </div><br></br>
+                <div className="post_body">
+                    {post.body}
+                </div><br></br>
+                {Buttons(post, this)}
+            </div>
+
+        );
     },
 
-    deech: function(){
-      debugger;
+    handleCheck: function(e){
+
+        var id = e.target.id;
+        var p = [];
+
+        this.props.posts.map(function(post){
+            if (post.id == parseInt(id)){
+                p.push(post)
+            }
+        });
+        this.setState({checked_post: p[0]});
     }
 });
 
 
-function Deech(){
-    alert(this)
+function showPost(e){
+    e.preventDefault();
+    alert(e.target)
 }
