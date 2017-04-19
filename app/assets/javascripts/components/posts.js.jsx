@@ -9,27 +9,23 @@ var Posts = React.createClass({
     },
 
     render: function() {
-        var c_post = this.state.checked_post
+
+        var c_post = this.state.checked_post;
+
     return (
       <div className="posts_list">
           {
               this.props.posts.map(function(post,index){
                   return (
                       <div key={index} id={post.id}>
-                          <div className="post_title">
-                              {post.title}
-                          </div><br></br>
-                          <div className="post_body">
-                              {post.body}
-                          </div><br></br>
-                          {Buttons(post, this)}
+                          <Post post={post} state={this.state} index={index} handler={this.handleCheck} show="true"/>
                       </div>
                     )
                   }, this
               )
           }
           <div className="post">
-              <Post post={this.state.checked_post} state={this.state} index="9191919" />
+              <Post post={this.state.checked_post} state={this.state} index="-1" handler={this.handleCheck} />
           </div>
       </div>
     );
@@ -37,12 +33,12 @@ var Posts = React.createClass({
 
     handleCheck: function(e){
         var id = e.target.id;
-        var p = []
+        var p = [];
         this.props.posts.map(function(post){
             if (post.id == parseInt(id)){
                 p.push(post)
             }
-        })
+        });
         this.setState({checked_post: p[0]});
     }
 });

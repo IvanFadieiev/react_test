@@ -1,7 +1,6 @@
 function Buttons(c_post, self) {
-    // self.state.checked_post.length == 0
-    if (false) {
-        return "NOT SELECTED";
+    if ((self.props.state.checked_post.length == 0) && (self.props.show != 'true') ) {
+        return "";
     }
     return (
         <div>
@@ -16,7 +15,7 @@ function Buttons(c_post, self) {
                 </label>
             </div><br></br>
             <div className="button">
-                <input type="button" onClick={self.handleCheck} value="Click Me!" id={c_post.id} />
+                <input type="button" onClick={self.props.handler} value="Click Me!" id={c_post.id} />
                 <a href="#" id={c_post.id} onClick={showPost}>{c_post.url}</a><br></br>
             </div><br></br>
         </div>

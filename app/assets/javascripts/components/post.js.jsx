@@ -22,19 +22,6 @@ var Post = React.createClass({
             </div>
 
         );
-    },
-
-    handleCheck: function(e){
-
-        var id = e.target.id;
-        var p = [];
-
-        this.props.posts.map(function(post){
-            if (post.id == parseInt(id)){
-                p.push(post)
-            }
-        });
-        this.setState({checked_post: p[0]});
     }
 });
 
