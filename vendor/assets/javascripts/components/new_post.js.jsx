@@ -1,4 +1,4 @@
-var NewPost = React.createClass({
+class NewPost extends React.Component{
     newPostClick() {
         const title = this.refs.title.value;
         const body = this.refs.body.value;
@@ -17,7 +17,7 @@ var NewPost = React.createClass({
             self.refs.body.value = '';
             self.refs.published.checked = false;
         });
-    },
+    }
 
     render() {
         return (
@@ -30,8 +30,8 @@ var NewPost = React.createClass({
                     <input ref="published" type="checkbox" />
                 </label>
                 <br/>
-                <button onClick={this.newPostClick}>Submit</button>
+                <button onClick={this.newPostClick.bind(this)}>Submit</button>
             </div>
         )
     }
-});
+}

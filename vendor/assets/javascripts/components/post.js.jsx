@@ -1,9 +1,9 @@
-var Post = React.createClass({
-    componentDidMount: function() {
+class Post extends React.Component{
+    componentDidMount() {
         console.log('this mounted POST')
-    },
+    }
 
-    showTitle: function (post, show) {
+    showTitle (post, show) {
         if (show){
             return(
                 <div className="post_title">
@@ -19,13 +19,14 @@ var Post = React.createClass({
                 <div className="post_body">
                     {post.body}
                 </div>
-                { this.check_index(this.props.state.checked_post.length, post) }
+                { this.check_index(this.props.state.checked_post, post) }
             </div>
         )
-    },
+    }
 
-    check_index: function(l, post){
-        if(l != 0){
+    check_index(l, post){
+        debugger
+        if(l){  // TODO
             return(
                 <div className="post_published">
                     <label>
@@ -36,9 +37,9 @@ var Post = React.createClass({
                 </div>
             )
         }
-    },
+    }
 
-    render: function() {
+    render() {
 
         const post = this.props.post;
         const state = this.props.state;
@@ -51,4 +52,4 @@ var Post = React.createClass({
         );
     }
 
-});
+}
