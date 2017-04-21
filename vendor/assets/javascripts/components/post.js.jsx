@@ -19,13 +19,13 @@ var Post = React.createClass({
                 <div className="post_body">
                     {post.body}
                 </div>
-                { this.check_index(post) }
+                { this.check_index(this.props.state.checked_post.length, post) }
             </div>
         )
     },
 
-    check_index: function(post){
-        if(post.published){
+    check_index: function(l, post){
+        if(l != 0){
             return(
                 <div className="post_published">
                     <label>

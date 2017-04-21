@@ -59,6 +59,10 @@ var Posts = React.createClass({
         this.setState({ show_link: bool });
     },
 
+    hide_bar: function(){
+        this.setState({ checked_post: [] });
+    },
+
     render: function() {
 
         const c_post = this.state.checked_post;
@@ -70,7 +74,8 @@ var Posts = React.createClass({
                     this.newPostButton(this.state)
                 }<br/>
                 {
-                    this.state.posts.map(function(post,index){
+                    this.state.posts.map(
+                        function(post,index){
                             return (
                                 <div key={index} id={post.id}>
                                     <Post
@@ -93,6 +98,7 @@ var Posts = React.createClass({
                         index="-1"
                         handler={this.handleCheck}
                     />
+                    {this.state.checked_post.length == 0 ? '' : <button onClick={this.hide_bar}>Hide</button>}
                 </div>
             </div>
 
